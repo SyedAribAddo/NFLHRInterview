@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+python-multipart
+python-dotenv
+requests
+azure-storage-blob
+openai
+elevenlabs
+SpeechRecognition
+moviepy

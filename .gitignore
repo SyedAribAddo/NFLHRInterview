@@ -1,0 +1,31 @@
+# secrets
+.env
+.env.*
+**/.env
+**/.env.*
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.log
+error_log.txt
+debug_output.txt
+debug_results.txt
+
+# node
+node_modules/
+dist/
+build/
+
+# data/artifacts
+checkpoints/
+uploads/
+*.zip
+*.tar
+*.tar.gz
+
+# OS
+.DS_Store
+Thumbs.db

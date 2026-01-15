@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT}
+      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY}
+      - AZURE_OPENAI_DEPLOYMENT_NAME=${AZURE_OPENAI_DEPLOYMENT_NAME}
+      - AZURE_STORAGE_CONNECTION_STRING=${AZURE_STORAGE_CONNECTION_STRING}
+      - AZURE_BLOB_CONTAINER=${AZURE_BLOB_CONTAINER}
+      - AZURE_BLOB_KEY=${AZURE_BLOB_KEY}
+      - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+      - ELEVENLABS_INTERVIEWER_AGENT_ID=${ELEVENLABS_INTERVIEWER_AGENT_ID}
+      - ELEVENLABS_VOICE_ID=${ELEVENLABS_VOICE_ID}
+      - HEYGEN_API_KEY=${HEYGEN_API_KEY}
+      - HEYGEN_AVATAR_ID=${HEYGEN_AVATAR_ID}
+      - DEMO_QUESTION_COUNT=${DEMO_QUESTION_COUNT}
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
